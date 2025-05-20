@@ -20,7 +20,7 @@ port = 60000
 s.connect((host, port))
 s.send("Hello server!".encode())
 
-with open('received_file', 'wb') as f:  # Binary write mode
+with open('received_file', 'wb') as f:
     while True:
         print('Receiving data...')
         data = s.recv(1024)
@@ -53,15 +53,15 @@ while True:
     print('Server received:', repr(data.decode()))
 
     filename = 'mytext.txt'
-    with open(filename, 'rb') as f:  # Open file in binary read mode
+    with open(filename, 'rb') as f:
         l = f.read(1024)
         while l:
-            conn.send(l)  # Send bytes
+            conn.send(l)
             print('Sent:', repr(l))
             l = f.read(1024)
 
     print('Done sending file')
-    conn.send("Thank you for connecting".encode())  # Final message
+    conn.send("Thank you for connecting".encode()) 
     conn.close()
     
 
